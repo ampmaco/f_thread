@@ -1,24 +1,62 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+初めまして、林晃弘と申します。
+この度はお忙しいところ、私のポートフォリオをご確認いただきましてありがとうございます。
+当サイトは以下項目に則ったWebアプリケーションとなります。
 
-Things you may want to cover:
+1. ログイン機能 (email + pass)
+2. 閲覧・投稿機能
+3. スレッド機能 (スレッドにレスをつけていくスタイル)
+4. カテゴリ設定 (スレッドごと / 1つのスレッドに複数付与可能)
+5. 検索機能 (単語 / スレッド及びレスの横断検索)
 
-* Ruby version
+URL：https://fivethread.herokuapp.com/
 
-* System dependencies
+テストユーザー　ログイン情報
+  E-mail：a@a
+password：123456
 
-* Configuration
+# 簡易説明
 
-* Database creation
+## 1.ログイン機能
 
-* Database initialization
+テストの際には上記ログイン情報をご利用ください。
+ログイン状態によって変動する機能は以下となります
 
-* How to run the test suite
+《ログイン時》
+・カテゴリーの登録・削除が可能
+・スレッドの投稿が可能
+・スレッドに対してのレスポンスが可能
+・ログアウト
 
-* Services (job queues, cache servers, search engines, etc.)
+《非ログイン時》
+・ユーザー新規登録・ログイン
+・スレッドとコメントの閲覧のみ可能
 
-* Deployment instructions
+## 2. 閲覧・投稿機能
 
-* ...
+・閲覧は非ログインでも可能ですが、投稿はログイン時に限る
+
+## 3. スレッド機能 (スレッドにレスをつけていくスタイル)
+
+・トップページのスレッドタイトル名をクリックしていただければ、スレッドの本文とそれについたレスポンスが確認可能
+・スレッドの作成とレスポンスの書き込みはログイン時のみ可能
+・スレッドタイトルと本文はトップページの検索フォームにて検索可能
+
+## 4. カテゴリ設定 (スレッドごと / 1つのスレッドに複数付与可能)
+
+・ログイン時のみ登録・削除可能
+・トップページと詳細画面に設定したカテゴリ名が記載
+・カテゴリ名はトップページの検索フォームにて検索可能
+
+## 5. 検索機能 (単語 / スレッド及びレスの横断検索)
+
+・トップページに検索フォームを配置
+・スレッドタイトル、スレッド本文、カテゴリが検索可能
+
+# 使用したgem
+
+devise	    ログイン機能実装用
+rails-i18n	検索用
+ransac    	検索用
+bootstrap	  navバー、ボタン機能
