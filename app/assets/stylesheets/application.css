@@ -17,3 +17,7 @@
  .text_left {
  	text-align: right;
  }
+
+ .button-margin-top {
+ 	margin-top: 10px;
+ }

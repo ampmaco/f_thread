@@ -16,10 +16,10 @@
                 <h3 class="block-title">
                   <i class="fa fa-map-marker"></i> スレッド一覧
                 </h3>
-                <p>タイトルクリックでスレッドを確認できます</p>
+                <p>以下検索フォームで、スレッド・レス・カテゴリの検索が可能です</p>
 
                 <%= search_form_for @q do |f| %>
-                  <%= f.search_field :title_or_body_or_messages_body_cont, placeholder: "スレッド本文 or タイトル or レスポンス検索", autofocus: true, class:"form-control" %>
+                  <%= f.search_field :title_or_body_or_messages_body_or_categories_category_name_cont, placeholder: "スレッド本文 or タイトル or レスポンス or カテゴリ検索", autofocus: true, class:"form-control" %>
                   <%= f.submit "検索", class: "btn btn-md btn-block btn-base-1 mt-10" %>
                 <% end %>
 
