@@ -18,6 +18,11 @@
                 </h3>
                 <p>タイトルクリックでスレッドを確認できます</p>
 
+                <%= search_form_for @q do |f| %>
+                  <%= f.search_field :title_or_body_or_messages_body_cont, placeholder: "スレッド本文 or タイトル or レスポンス検索", autofocus: true, class:"form-control" %>
+                  <%= f.submit "検索", class: "btn btn-md btn-block btn-base-1 mt-10" %>
+                <% end %>
+
                 <% @posts.each do |post| %>
                 <hr>
                 <ul class="inline-meta">
