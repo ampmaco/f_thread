@@ -41,7 +41,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'sqlite3'
-  gem 'pg'
 end
 
 group :test do
@@ -62,3 +61,7 @@ gem 'jquery-rails'
 # 検索機能
 gem 'rails-i18n'
 gem 'ransack'
+
+group :production do
+  gem 'pg'
+end
