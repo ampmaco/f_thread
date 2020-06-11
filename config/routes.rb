@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :categories, only: [:new, :create, :index]
+  root 'posts#index'
+  resources :categories, only: [:create, :index, :destroy]
   resources :posts, only: [:new, :create, :index, :show] do
   	resource :messages, only: [:create, :destroy]
   end
