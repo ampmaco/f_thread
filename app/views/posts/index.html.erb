@@ -14,17 +14,34 @@
 
               <div class="block-content">
                 <h3 class="block-title">
-                  <a href="#"><i class="fa fa-map-marker"></i> ショップ名</a>
+                  <i class="fa fa-map-marker"></i> スレッド一覧
                 </h3>
-                <p>この画像に関する説明</p>
+                <p>タイトルクリックでスレッドを確認できます</p>
+
+                <% @posts.each do |post| %>
+                <hr>
                 <ul class="inline-meta">
-                  <li>By
-                    <a href="#">投稿者名</a>
+                  <li>
+                    <%= link_to post_path(post.id) do %>
+                      <%= post.title %> (<%= post.messages.count %>)
+                    <% end %>
                   </li>
                   <li>
-                    <a href="#">23 コメント</a>
+                    <% post.post_categories.each do |post_category| %>
+                      #<%= post_category.category.category_name %>
+                    <% end %>
+                  </li>
+                  <li>Posted by
+                    <%= post.user.name %>
                   </li>
                 </ul>
+
+                <% end %>
+              <div class="block-image">
+                <div class="view view-first">
+                </div>
+              </div>
+
               </div>
             </div>
           </div>

@@ -1,72 +1,82 @@
 <section class="sct-color-1 slice">
-  <div class="container">
+  <div class="container-fluid masonry-container">
     <div class="row">
-      <div class="col-md-12 post_images_container">
-        <div class="post-item">
+      <div class="col-md-8 col-sm-offset-2">
+        <div class="masonry-wrapper-cols">
+          <div class="masonry-gutter"></div>
+          <div class="masonry-block">
+            <div class="block block-image v1">
 
-          <div class="post-meta-top">
-            <div class="post-image">
-
-            </div>
-          </div>
-
-          <div class="post-content">
-            <h2 class="post-title">ここにタイトル</h2>
-            <ul class="meta-info-cells v4 float-wrapper">
-              <li>
-                <i class="fa fa-user"></i>By
-                <a href="#">投稿者名</a>
-              </li>
-              <li>
-                <i class="fa fa-comment"></i>
-                <a href="#comments">4</a>
-              </li>
-            </ul>
-            <div class="post-content-inner mt-20">
-              <p>ここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキストここにテキスト</p>
-            </div>
-          </div>
-
-          <div class="comment-list bt style-2" id="comments">
-            <ol>
-              <li class="comment">
-                <div class="comment-body bb">
-                  <div class="comment-avatar">
-                    <div class="avatar">
-                      <!-- <img src="images/sample-author1.jpg"> -->
-                      <%= image_tag('sample-author1.jpg') %>
-                    </div>
-                  </div>
-                  <div class="comment-text">
-                    <div class="comment-author clearfix">
-                      <a href="#">投稿者名</a>
-                      <span class="comment-meta">
-                        <span class="comment-date">2017/07/21</span>
-                      </span>
-                    </div>
-                    <div class="comment-entry">コメントがここに表示されますコメントがここに表示されますコメントがここに表示されますコメントがここに表示されますコメントがここに表示されますコメントがここに表示されますコメントがここに表示されます</div>
-                  </div>
+              <div class="block-image">
+                <div class="view view-first">
                 </div>
-              </li>
-            </ol>
-          </div>
-          <hr>
+              </div>
 
-          <!-- Add comment section -->
-          <div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
-            <h3 class="section-title left">
-              <span>コメント</span>
-            </h3>
-          </div>
-          <form class="mt-20">
-            <div class="row">
-              <div class="col-sm-12">
-                <textarea class="form-control" rows="5" placeholder="コメントをここに"></textarea>
+              <div class="block-content">
+                <!-- スレッドタイトル表示 -->
+                <h3 class="block-title">
+                  <i class="fa fa-map-marker"></i> <%= @post.title %><br>
+                </h3>
+                <hr>
+                <!-- スレッド本文表示 -->
+                <p><%= @post.body %></p>
+                <p class="text_left">
+                  カテゴリー：
+                  <% @post.post_categories.each do |post_category| %>
+                    <span>  #<%= post_category.category.category_name %></span>
+                  <% end %>
+                </p>
+                <p class="text_left">
+                  Posted by <%= @post.user.name %>
+                </p>
+                <h3 class="block-title">
+                  <i class="fa fa-map-marker"></i> レスポンス一覧
+                </h3>
+                  <!-- レスポンス表示 -->
+                  <% @post.messages.each do |message| %>
+                  <hr>
+                  <ul class="inline-meta">
+                    <li>
+                        <%= message.body %>
+                    </li>
+                    <li>Responsed by
+                      <%= message.user.name %>
+                    </li>
+                  </ul>
+
+                  <% end %>
+
+              <!-- ログインしていればレスポンス生成画面を表示 -->
+                <% if user_signed_in? %>
+                  <hr>
+
+                  <h3 class="block-title">
+                    <i class="fa fa-map-marker"></i> コメントする
+                  </h3>
+
+                  <%= form_for [@post, @message] do |f| %>
+                    
+
+                          <%= f.label :body, '本文：' %>
+                          <%= f.text_area :body, autofocus: true, class:"form-control", placeholder:"レスポンス" %>
+
+
+                    <hr>
+
+                    <%= f.submit "コメントする", class: "btn btn-lg btn-block btn-base-1 mt-20" %>
+
+                  <% end %>
+
+                <% end %>
+
+              <div class="block-image">
+                <div class="view view-first">
+                </div>
+              </div>
+
               </div>
             </div>
-            <button type="submit" class="btn btn-lg btn-base-1 mt-20 pull-right">送信する</button>
-          </form>
-
+          </div>
         </div>
       </div>
     </div>

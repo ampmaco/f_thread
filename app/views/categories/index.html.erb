@@ -13,22 +13,17 @@
 
             <%= form_for @category, url: categories_path do |f| %>
               
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group has-icon">
 
-                    カテゴリー名：<%= f.text_field :category_name %>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                </div>
-              </div>
+                    <%= f.label :category_name, 'カテゴリー名：' %>
+                    <%= f.text_field :category_name, autofocus: true, class:"form-control", placeholder:"カテゴリー" %>
+
 
               <hr>
 
               <%= f.submit "登録", class: "btn btn-lg btn-block btn-base-1 mt-20" %>
 
             <% end %>
+
 
           </div>
         </div>
@@ -44,14 +39,11 @@
               </h3>
             </div>
 
-            <%= @categories.each do |category| %>
+            <% @categories.each do |category| %>
               
               <div class="row">
                 <div class="col-sm-6">
-                  <div class="form-group has-icon">
-
                     <%= category.category_name %>
-                  </div>
                 </div>
                 <div class="col-sm-6">
                   <%= button_to "削除", category_path(category.id), method: :delete, class: "btn btn-sm btn-block btn-base-1" %>
